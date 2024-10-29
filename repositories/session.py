@@ -1,5 +1,6 @@
 import json
 import os
+from typing import List
 
 
 class SessionRepository:
@@ -7,6 +8,11 @@ class SessionRepository:
         self.workdir = workdir
         self.sessions = {}
         accounts_path = os.path.join(self.workdir, "accounts.json")
+        if not os.path.exists(accounts_path):
+            os.makedirs(self.workdir, exist_ok=True)
+            with open(accounts_path, "w") as f:
+                json.dump({}, f)
+            
         with open(accounts_path, encoding="utf-8") as f:
             self.accounts = json.load(f)
 
@@ -17,7 +23,7 @@ class SessionRepository:
 
         return session
 
-    def get_accounts(self) -> list[object]:
+    def get_accounts(self) -> List[object]:
         sessions = [
             file.replace(".session", "")
             for file in os.listdir(self.workdir)
@@ -38,10 +44,10 @@ class SessionRepository:
                     sessions[session] = {"is_available": False}
         return self.sessions
 
-    def get_available_accounts(self) -> list[object]:
+    def get_available_accounts(self) -> List[object]:
         sessions = self.get_accounts()
         results = []
-
+        
         for session in sessions:
             if session["is_available"]:
                 results.append(session)

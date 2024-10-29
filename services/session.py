@@ -1,4 +1,6 @@
 import re
+import time
+from dtos.session import GetTokenRequest
 from repositories.session import SessionRepository
 from data import config
 import pyrogram
@@ -9,6 +11,7 @@ class SessionService:
         self.sessions = {}
         self.clients = {}
         self.session_repository = session_repository
+
 
     def get_client(self, session_id: str):
         if session_id in self.clients:
@@ -52,3 +55,6 @@ class SessionService:
         client.stop()
 
         return {"otp": otp}
+
+    def get_token(self, req: GetTokenRequest):
+        pass        
