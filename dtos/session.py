@@ -4,10 +4,14 @@ from typing import Optional
 
 from dtos.base import Meta
 
-class GetTokenRequest(BaseModel):
-    project_id: str
+
+class GetQueryIDRequest(BaseModel):
+    bot_id: str
+    bot_shortname: str
     session_name: str
-    
-class GetTokenResponse(BaseModel):
+    ref_token: Optional[str]
+
+
+class GetQueryIDResponse(BaseModel):
     meta: Meta
     data: str
