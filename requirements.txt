@@ -5,3 +5,4 @@ tgcrypto
 rich
 fake_useragent
 faker
+aiohttp_socks

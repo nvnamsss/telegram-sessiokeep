@@ -4,7 +4,12 @@ import time
 from fastapi import FastAPI, APIRouter
 
 from dtos.base import Meta
-from dtos.session import GetQueryIDRequest, GetQueryIDResponse
+from dtos.session import (
+    GetOTPRequest,
+    GetOTPResponse,
+    GetQueryIDRequest,
+    GetQueryIDResponse,
+)
 from services.session import SessionService
 
 logger = logging.getLogger(__name__)
@@ -34,9 +39,9 @@ class SessionController:
     def get(self):
         return {"message": "himom"}
 
-    def get_otp(self, request):
+    def get_otp(self, request: GetOTPRequest) -> GetOTPResponse:
         res = self.session_service.get_otp(request.query_params["session_id"])
-        return res
+        return GetOTPResponse(meta=Meta(status=200, message="success"), data=res)
 
     async def get_query_id(self, request: GetQueryIDRequest):
         logger.info(f"Request: {request}")

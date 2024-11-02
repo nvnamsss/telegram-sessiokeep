@@ -15,3 +15,12 @@ class GetQueryIDRequest(BaseModel):
 class GetQueryIDResponse(BaseModel):
     meta: Meta
     data: str
+
+
+class GetOTPRequest(BaseModel):
+    session_id: str
+
+
+class GetOTPResponse(BaseModel):
+    meta: Meta
+    data: str
