@@ -3,6 +3,6 @@ from pydantic import BaseModel, EmailStr
 from typing import Optional
 
 class Meta(BaseModel):
-    status: int
+    code: int
     message: str
     

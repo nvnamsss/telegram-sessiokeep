@@ -44,5 +44,5 @@ class SessionController:
 
         logger.info(f"Query ID: {query_id}")
         return GetQueryIDResponse(
-            meta=Meta(status=200, message="success"), data=query_id
+            meta=Meta(code=200, message="success"), data=query_id
         )

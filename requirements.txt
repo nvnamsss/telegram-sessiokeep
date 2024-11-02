@@ -3,3 +3,5 @@ pyrogram
 uvicorn
 tgcrypto
 rich
+fake_useragent
+faker

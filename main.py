@@ -43,7 +43,7 @@ if __name__ == "__main__":
     tel_client = telegram.client.Client(
         api_hash="",
         api_id="",
-        workdir="/home/crom/git/airdrops/telegram-sessiokeep/sessions",
+        workdir="/home/namnv/git/airdrops/telegram-sessiokeep/sessions",
     )
 
     # repositories
